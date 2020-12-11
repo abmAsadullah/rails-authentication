@@ -1,1 +1,19 @@
 <h1>Wellcome to our app </h1>
+<% @posts.each do |f| %><br>
+<div class="card" style="width: 18rem;">
+  <div class="card-body">
+    <h5 class="card-title"><%= f.user.name %></h5>
+    <h6 class="card-subtitle mb-2 text-muted"><%= f.user.username %></h6>
+    <p class="card-text"><%= f.post %></p>
+  </div>
+</div>
+ 
+<% end %><br>
+
+<% if user_signed_in? %>
+<%= link_to 'Create A New Post', new_post_path, class:'btn btn-success' %><br>
+<%= link_to 'Log Out', destroy_user_session_path, method: :delete, data: { confirm: 'GoodBye' }, class: 'btn btn-primary' %>
+<% else %>
+<%= link_to 'Log In', new_user_session_path, class:'btn btn-info' %>
+<%= link_to 'Sign Up',  new_user_registration_path, class:'btn btn-info' %>
+<% end %>
