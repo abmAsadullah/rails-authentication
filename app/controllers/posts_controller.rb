@@ -2,7 +2,7 @@ class PostsController < ApplicationController
   before_action :authenticate_user!, except: %i[index show]
 
   def index
-   @posts = Post.all.order('created_at DESC')
+    @posts = Post.all.order('created_at DESC')
     @post = Post.new
   end
 
@@ -17,14 +17,14 @@ class PostsController < ApplicationController
 
   def new
     @post = current_user.posts.build
-  end 
+  end
 
   def show
-   @post = Post.find(params[:id])
+    @post = Post.find(params[:id])
   end
 
   def edit
-  @post = Post.find(params[:id])
+    @post = Post.find(params[:id])
   end
 
   def update
@@ -36,13 +36,14 @@ class PostsController < ApplicationController
     end
   end
 
-  def destroy 
-   @post = Post.find(params[:id])
-   @post.destroy
-   redirect_to root_path
+  def destroy
+    @post = Post.find(params[:id])
+    @post.destroy
+    redirect_to root_path
   end
-    
+
   private
+  
   def post_params
     params.require(:post).permit(:post)
   end
