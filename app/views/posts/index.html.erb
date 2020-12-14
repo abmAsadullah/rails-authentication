@@ -1,0 +1,15 @@
+<h1>Wellcome to our app </h1>
+<% @posts.each do |f| %><br>
+<div class="card" style="width: 18rem;">
+  <div class="card-body">
+    <% if user_signed_in? %>
+        <h5 class="card-title"><%= f.user.name %></h5>
+        <h6 class="card-subtitle mb-2 text-muted">@<%= f.user.username %></h6>
+        <p class="card-text"><%= f.post  %></p>
+    <% else %>
+        <p class="card-text"><%= f.post %></p>
+    <% end %>
+  </div>
+</div>
+ 
+<% end %><br>
